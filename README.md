@@ -23,7 +23,9 @@ A web based complaint management platform developed using flask and SQLite that 
 
 smart-complaint-form/
 │── app.py
+
 │── admin.html
+
 │── admin_dashboard.html
 │── admin_login.html
 │── dashboard.html
