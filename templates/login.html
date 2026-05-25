@@ -1,0 +1,130 @@
+<style>
+    .login-box {
+        width: 10px;
+        background: rgba(0,0,0,0.9);
+        color: white;
+        padding: 40px;
+        margin: auto;
+        margin-top: 100px;
+        border-radius: 12px;
+        text-align: center;
+    }
+     h2 {
+        font-size: 70px;      /* Increase title size */
+        color: #fd4b05;       /* Change title color */
+        margin-bottom: 100px;
+    }
+
+    label {
+        font-size:70px;      /* Radio button text size */
+        color: #f70505;
+    }
+     input {
+        width: 45%;
+        padding: 12px;
+        margin: 12px;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;      /* Input text size */
+    }
+
+    button {
+        padding: 12px 55px;
+        background: #00c6ff;
+        border: none;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 30px;      /* Button text size */
+    }
+    button:hover {
+        background: #0072ff;
+    }
+
+    a {
+        color: #00c6ff;
+        font-size: 40px;
+    }
+        body {
+            background: url("/static/complaint_bg.jpg");
+            background-size: 100% 100%;  /* shows full image */
+            background-repeat: no-repeat;
+            background-position: center;
+            
+            font-family: Arial;
+            text-align: center;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            width: 55%;
+            background: white;
+            border-radius: 55px;
+            overflow: visible;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 9px solid #f73e0600;
+        }
+
+        th {
+            background: #333;
+            color: rgb(253, 104, 4);
+        }
+        .role-select {
+    margin: 15px 0;
+}
+
+/* Make radio bigger */
+.radio-box input[type="radio"] {
+    transform: scale(1.8);   /* increase size */
+    margin-right: 20px;       /* very small space */
+    cursor: pointer;
+}
+
+/* Align properly */
+.radio-box {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Colors */
+.user-box span {
+    color: #0011ff;
+}
+
+.admin-box span {
+    color: #ff0000;
+}
+</style>
+
+<h2>Login</h2>
+
+<form method="POST">
+    <div class="role-select">
+        <label class="radio-box user-box">
+            <input type="radio" name="role" value="user" checked>
+            <span>User</span>
+        </label>
+
+        <label class="radio-box admin-box">
+            <input type="radio" name="role" value="admin">
+            <span>Admin</span>
+        </label>
+    </div>
+    <br><br>
+
+    <input type="text" name="email" placeholder="Email or Username"><br><br>
+    <input type="password" name="password" placeholder="Password"><br><br>
+
+    <button type="submit">Login</button>
+</form>
+
+<br>
+<a href="/register">Register</a>

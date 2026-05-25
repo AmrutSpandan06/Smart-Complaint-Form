@@ -1,0 +1,108 @@
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Oswald;
+    background: url("/static/123_bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Complaints table box */
+.complaints-box {
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+    background: rgba(0,0,0,0);
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+/* Back button */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    background: #00c6ff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.back-btn:hover {
+    background: #0072ff;
+}
+
+/* Transparent table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.5);
+    color: rgb(20, 20, 20);
+    font-weight: bold;
+    backdrop-filter: blur(5px);
+}
+
+th {
+    background: rgba(0, 198, 255, 0.7);
+    color: white;
+}
+
+td {
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,0.3);
+    text-align: center;
+}
+</style>
+
+<body>
+
+<a href="/dashboard" class="back-btn">⬅ Back</a>
+
+<div class="complaints-box">
+    <h2 align="center">My Complaints</h2>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Address</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Status</th>
+        </tr>
+
+        {% for row in data %}
+        <tr>
+            <td>{{ row[0] }}</td>   <!-- ID -->
+            <td>{{ row[2] }}</td>   <!-- Title -->
+            <td>{{ row[6] }}</td>   <!-- Address -->
+            <td>{{ row[3] }}</td>   <!-- Description -->
+
+            <td>
+                <img src="{{ url_for('static', filename='uploads/' + row[4]) }}" width="100">
+            </td>
+
+            <td>
+                {% if row[5] == 'Pending' %}
+                    <span style="color: orange; font-weight: bold;">Pending</span>
+                {% elif row[5] == 'Approved' %}
+                    <span style="color: lightgreen; font-weight: bold;">Approved</span>
+                {% elif row[5] == 'Rejected' %}
+                    <span style="color: red; font-weight: bold;">Rejected</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+
+</body>

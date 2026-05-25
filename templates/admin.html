@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            background: url("/static/admin_bg.jpg");
+            background-size: 100% 100%;  /* shows full image */
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: Arial;
+            text-align: center;
+        }
+        h2 {
+            font-size: 30px;      /* Increase title size */
+            color: #0c3a7e;       /* Change title color */
+            margin-bottom: 100px;
+        }
+
+        table {
+            margin: auto;
+            margin-top: 10px;
+            border-collapse: collapse;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.842);
+            border-radius: 55px;
+            overflow: visible;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 9px solid #f73e0600;
+        }
+
+        th {
+            background: #333;
+            color: rgb(253, 104, 4);
+        }
+        img {
+            border-radius: 5px;
+        }
+
+        .approved {
+            color: green;
+            font-weight: bold;
+        }
+
+        .rejected {
+            color: red;
+            font-weight: bold;
+        }
+
+        .pending {
+            color: orange;
+            font-weight: bold;
+        }
+
+        a.button {
+            padding: 5px 10px;
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+            margin: 2px;
+        }
+
+        .approve-btn {
+            background: green;
+        }
+
+        .reject-btn {
+            background: red;
+        }
+        .logout-container {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .logout-btn {
+            background-color: red;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+
+        .logout-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Admin Panel</h2>
+
+
+<br><br>
+
+<table>
+<tr>
+    <th>ID</th>
+    <th>User ID</th>
+    <th>Title</th>
+    <th>Address</th>
+    <th>Description</th>
+    <th>Image</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+
+{% for row in data %}
+<tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[6] }}</td>
+    <td>{{ row[3] }}</td>
+
+    <td>
+        <img src="/static/uploads/{{ row[4] }}" width="100">
+    </td>
+
+    <td>
+        {% if row[5] == 'Approved' %}
+            <span class="approved">Approved</span>
+        {% elif row[5] == 'Rejected' %}
+            <span class="rejected">Rejected</span>
+        {% else %}
+            <span class="pending">Pending</span>
+        {% endif %}
+    </td>
+
+    <td>
+        <button onclick="updateStatus({{row[0]}}, 'Approved')">Approve</button>
+        <button onclick="updateStatus({{row[0]}}, 'Rejected')">Reject</button>
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+<div class="logout-container">
+    <a href="/logout" class="logout-btn">Logout</a>
+</div>
+<script>
+    function updateStatus(id, status) {
+        fetch('/update_status', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'id=' + id + '&status=' + status
+        })
+        .then(response => response.text())
+        .then(data => {
+            if(data == "Success") {
+                alert("Status Updated");
+                location.reload();
+            }
+        });
+    }
+</script><br>
+</body>
+</html>

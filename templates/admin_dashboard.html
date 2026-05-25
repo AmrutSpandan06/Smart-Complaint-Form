@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body style="font-family:Arial; text-align:center;">
+
+<h1>Admin Dashboard</h1>
+
+<h2>Total Complaints: {{ total }}</h2>
+<h2 style="color:orange;">Pending: {{ pending }}</h2>
+<h2 style="color:green;">Approved: {{ approved }}</h2>
+
+<a href="/admin">Manage Complaints</a>
+
+</body>
+</html>
