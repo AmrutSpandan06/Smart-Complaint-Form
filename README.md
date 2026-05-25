@@ -22,15 +22,21 @@ A web based complaint management platform developed using flask and SQLite that 
 ## Project Structure
 
 smart-complaint-form/
+
 │── app.py
 
 │── admin.html
 
 │── admin_dashboard.html
+
 │── admin_login.html
+
 │── dashboard.html
+
 │── login.html
+
 │── my_complaints.html
+
 │── register.html  
 
 ## Database Tables
