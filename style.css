@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #667eea, #764ba2);
+}
+
+/* Center box for all forms */
+.container {
+    width: 350px;
+    margin: 80px auto;
+    padding: 25px;
+    background: rgba(0,0,0,0.75);
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+}
+
+/* Inputs */
+input, textarea, select {
+    width: 92%;
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: linear-gradient(to right, #0072ff, #00c6ff);
+}
+
+/* Links */
+a {
+    color: yellow;
+    text-decoration: none;
+}
+
+/* Table pages (admin & my complaints) */
+.table-container {
+    width: 90%;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #0072ff;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Status colors */
+.pending { color: orange; font-weight: bold; }
+.approved { color: green; font-weight: bold; }
+.rejected { color: red; font-weight: bold; }
+
+/* Make select boxes small */
+select {
+    width: 60%;
+    padding: 8px;
+    margin: 6px auto;
+    display: block;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Make text inputs small */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 90%;
+    padding: 8px;
+    margin: 6px auto;
+    display: block;
+    border-radius: 5px;
+    border: none;
+}
+
+/* File upload */
+input[type="file"] {
+    margin: 10px auto;
+    display: block;
+    color: white;
+}
